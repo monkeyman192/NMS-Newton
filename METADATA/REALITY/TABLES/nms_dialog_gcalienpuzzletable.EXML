@@ -1,0 +1,90 @@
+<Data template="cGcAlienPuzzleTable">
+	<Property name="Table">
+		<Property name="Table" value="GcAlienPuzzleEntry" _id="STATION_CORE">
+			<Property name="Options">
+				<Property name="Options" value="GcAlienPuzzleOption" _index="3">
+					<Property name="Name" value="MOD_NEWTON_CORE_ACTIVATE" />
+					<Property name="Text" value="MOD_NEWTON_CORE_ACT_TEXT" />
+					<Property name="IsAlien" value="false" />
+					<Property name="ResponseLanguageOverride" value="GcAlienRace">
+						<Property name="AlienRace" value="None" />
+					</Property>
+					<Property name="Cost" value="" />
+					<Property name="Rewards">
+						<Property name="Rewards" value="MOD_NEWTON_SWAP" _index="0" />
+					</Property>
+					<Property name="Mood" value="GcAlienMood">
+						<Property name="Mood" value="Neutral" />
+					</Property>
+					<Property name="Prop" value="GcNPCPropType">
+						<Property name="NPCProp" value="DontCare" />
+					</Property>
+					<Property name="OverrideWithAlienWord" value="false" />
+					<Property name="AlienWordSpecificRace" value="GcAlienRace">
+						<Property name="AlienRace" value="None" />
+					</Property>
+					<Property name="ReseedInteractionOnUse" value="false" />
+					<Property name="KeepOpen" value="false" />
+					<Property name="DisplayCost" value="true" />
+					<Property name="TruncateCost" value="false" />
+					<Property name="MarkInteractionComplete" value="false" />
+					<Property name="NextInteraction" value="" />
+					<Property name="SelectedOnBackOut" value="false" />
+					<Property name="AudioEvent" value="GcAudioWwiseEvents">
+						<Property name="AkEvent" value="INVALID_EVENT" />
+					</Property>
+					<Property name="TitleOverride" value="" />
+					<Property name="SkipStraightToOptionsOnNextPuzzle" value="false" />
+					<Property name="EnablingConditionTest" value="GcMissionConditionTest">
+						<Property name="ConditionTest" value="AnyFalse" />
+					</Property>
+					<Property name="EnablingConditions" />
+					<Property name="EnablingConditionId" value="" />
+					<Property name="WordCategory" value="GcWordCategoryTableEnum">
+						<Property name="wordcategorytableEnum" value="MISC" />
+					</Property>
+				</Property>
+				<Property name="Options" value="GcAlienPuzzleOption" _index="4">
+					<Property name="Name" value="ALL_REQUEST_LEAVE" />
+					<Property name="Text" value="" />
+					<Property name="IsAlien" value="false" />
+					<Property name="ResponseLanguageOverride" value="GcAlienRace">
+						<Property name="AlienRace" value="None" />
+					</Property>
+					<Property name="Cost" value="" />
+					<Property name="Rewards" />
+					<Property name="Mood" value="GcAlienMood">
+						<Property name="Mood" value="Neutral" />
+					</Property>
+					<Property name="Prop" value="GcNPCPropType">
+						<Property name="NPCProp" value="DontCare" />
+					</Property>
+					<Property name="OverrideWithAlienWord" value="false" />
+					<Property name="AlienWordSpecificRace" value="GcAlienRace">
+						<Property name="AlienRace" value="None" />
+					</Property>
+					<Property name="ReseedInteractionOnUse" value="false" />
+					<Property name="KeepOpen" value="false" />
+					<Property name="DisplayCost" value="true" />
+					<Property name="TruncateCost" value="false" />
+					<Property name="MarkInteractionComplete" value="false" />
+					<Property name="NextInteraction" value="" />
+					<Property name="SelectedOnBackOut" value="true" />
+					<Property name="AudioEvent" value="GcAudioWwiseEvents">
+						<Property name="AkEvent" value="INVALID_EVENT" />
+					</Property>
+					<Property name="TitleOverride" value="" />
+					<Property name="SkipStraightToOptionsOnNextPuzzle" value="false" />
+					<Property name="EnablingConditionTest" value="GcMissionConditionTest">
+						<Property name="ConditionTest" value="AnyFalse" />
+					</Property>
+					<Property name="EnablingConditions" />
+					<Property name="EnablingConditionId" value="" />
+					<Property name="WordCategory" value="GcWordCategoryTableEnum">
+						<Property name="wordcategorytableEnum" value="MISC" />
+					</Property>
+				</Property>
+			</Property>
+		</Property>
+	</Property>
+</Data>

@@ -1,18 +1,26 @@
 # NMS Newton (beta test version (0.2.0))
 
-Moving planets, in NMS!
+## Features:
+
+ - Moving planets, in NMS!
+ - Custom dialogue options at the Station Core interaction which lets you turn the planetary simulation off an on (mostly just a showcase/experiment).
+ - Custom UI for showing the orbital period of the planet you are pointed at with your ship.
 
 ## Before you start:
 
 This mod doesn't implement saving yet, so for now, always ensure that you start and end your session in your space ship otherwise you may get softlocked potentially (don't blame me if you mess up a save!)
+This mod also does not handle moving POI's, or bases, or anything else really other than the planets.
 
-## How to use:
+## Installation:
 
-To use this mod you will need python installed (between version 3.9 and 3.11 inclusive)
-Before you start, ensure steam is running, then run the following commands from this folder (easiest way is to type `cmd` in the windows explorer navigation bar which will open the command prompt in that folder):
+1. Place the contents of this repo inside a folder under the usual `MODS` folder of No Man's Sky (ie. this file should be at `GAMEDATA/MODS/Newton/`)
+2. Install a python version between 3.9 and 3.11 inclusive. NOTE: Do not install from the windows store as this version will not work.
+3. Ensure steam is running (Mod *may* work on GOG but is currently untested...).
+4. Install [NMS.py](https://github.com/monkeyman192/NMS.py): `python -m pip install NMSpy`
+5. Run NMS.py: `pymhf run nmspy`
 
-1. `python -m pip install uv`
-2. `uv run newton.py`
+If this is your first time using NMS.py, you will be prompted for a location for the mod folder. Specify your `MODS` folder.
+You should not need to configure any other options, so you can just continue through and launch the game
 
 The game should start up automatically and you should see a log window as well as another popup which lets you modify some parameters of the mod.
 Once you have loaded in, you can untick the "Simulation paused" check box for the planets to start moving.
