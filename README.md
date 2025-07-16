@@ -6,9 +6,11 @@
  - Custom dialogue options at the Station Core interaction which lets you turn the planetary simulation off an on (mostly just a showcase/experiment).
  - Custom UI for showing the orbital period of the planet you are pointed at with your ship.
 
+See a (not so great) video of it in action [here](https://youtu.be/ZrvR6W9D68o)
+
 ## Before you start:
 
-This mod doesn't implement saving yet, so for now, always ensure that you start and end your session in your space ship otherwise you may get softlocked potentially (don't blame me if you mess up a save!)
+This mod doesn't implement saving yet, so for now, always ensure that you start and end your session in your space ship or inside a spacce station otherwise you may get softlocked potentially (don't blame me if you mess up a save!)
 This mod also does not handle moving POI's, or bases, or anything else really other than the planets.
 
 ## Installation:
