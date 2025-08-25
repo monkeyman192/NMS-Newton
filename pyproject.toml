@@ -2,7 +2,7 @@
 name = "NMS-Newton"
 description = "Mod for No Man's Sky to make the planets move"
 readme = "README.md"
-requires-python = ">=3.9, <3.12"
+requires-python = ">=3.9, <4"
 # TODO: Add
 license = {file = "LICENSE.md"}
 keywords = ["hooking", "games", "hacking", "modding"]
@@ -25,7 +25,7 @@ classifiers = [
 dependencies = [
   "nmspy"
 ]
-version = "0.2.0"
+version = "0.2.1"
 
 [tool.uv]
 python-preference = "only-system"

@@ -1,6 +1,6 @@
 # /// script
 # dependencies = ["nmspy"]
-# requires-python = ">=3.9, <=3.11"
+# requires-python = ">=3.9, <4"
 # 
 # [tool.pymhf]
 # exe = "NMS.exe"

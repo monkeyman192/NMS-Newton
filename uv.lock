@@ -18,20 +18,20 @@ wheels = [
 
 [[package]]
 name = "dearpygui"
-version = "1.11.1"
+version = "2.1.0"
 source = { registry = "https://pypi.org/simple" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4e/a6/3a35e3cd04507d5a42011c2a9e9f9252834634e45219012b200ccea2e852/dearpygui-1.11.1-cp310-cp310-macosx_10_6_x86_64.whl", hash = "sha256:b668f28aab63d8ad0b2768add4e689bedb7480e8c3390edcce7a0f5d296fd61f", size = 2322627 },
-    { url = "https://files.pythonhosted.org/packages/72/39/6cd140408baf0a2ef9ca34473c705a05e31ac19dac5285855a78b254f817/dearpygui-1.11.1-cp310-cp310-macosx_13_0_arm64.whl", hash = "sha256:39d099b1ca97fd7d36934a5187fc4cd868d4772e504290a70fc95eda03c5125d", size = 1784467 },
-    { url = "https://files.pythonhosted.org/packages/d2/ab/da9f5774ff5656a40bfde4bfe186220ea7fe22d3f4da8bc14e15174b0237/dearpygui-1.11.1-cp310-cp310-manylinux1_x86_64.whl", hash = "sha256:3ba12334d993b653df2d07fe34c93c4ec65e54c022066ba245cd596a18b43a68", size = 2764798 },
-    { url = "https://files.pythonhosted.org/packages/d8/0b/2e58c917e59865c3949facc29dcbfb1fa3f8404972055d86524db4e5c6fd/dearpygui-1.11.1-cp310-cp310-win_amd64.whl", hash = "sha256:6cf4c44db1f016ff3eab367f7bde7f169bad5f2f90b974c202808112a69a2b15", size = 1723099 },
-    { url = "https://files.pythonhosted.org/packages/03/4a/731b020fc60f2755ef4b7391d5c3159a8b5ad4602a1d64c1e324fff8eba0/dearpygui-1.11.1-cp311-cp311-macosx_10_6_x86_64.whl", hash = "sha256:cc15cd13c1aeae2847ed9c4b2201169add3efdedf564eb706f5b5896ddaa5d8a", size = 2322621 },
-    { url = "https://files.pythonhosted.org/packages/7a/0e/7bcd7d24b9a74ec7d094cd3877d537b30963bcce0331e20531692a92205c/dearpygui-1.11.1-cp311-cp311-macosx_13_0_arm64.whl", hash = "sha256:9eb7d581863d39543b213252041ed25856acbfa58c57291e6acb6ccbf0c2727b", size = 1784374 },
-    { url = "https://files.pythonhosted.org/packages/af/70/e91bdb5cd4f852441efbda71620adabe0a061d0397bf17ee0cd1c10175c7/dearpygui-1.11.1-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:564ff3af657f7becd059b6611e162cc9cd8148befaf8aadb10e4fb76d57df3ef", size = 2764797 },
-    { url = "https://files.pythonhosted.org/packages/43/d4/cfb15997090f080946f544b84f6ff403be5a29c2c59ad47ae67359579797/dearpygui-1.11.1-cp311-cp311-win_amd64.whl", hash = "sha256:ac6e9bde61dcb3cc253da59e70fe2b743d3c3b5791d415eaa8d307f4517048ca", size = 1723248 },
-    { url = "https://files.pythonhosted.org/packages/a3/24/2fdf6599e6f567e2f00b80d4179b19d2b24b57aad5313cf83fba3f46c47a/dearpygui-1.11.1-cp39-cp39-macosx_10_6_x86_64.whl", hash = "sha256:d22285f9a5f1377d87effd1f27020eec3ae0386f7c15a4893809909b82c62b1b", size = 2322632 },
-    { url = "https://files.pythonhosted.org/packages/4d/6f/96046b9a02fb9c78e3a7b373cde71cb2eb4d96f16e8052f26c24acd5cf0d/dearpygui-1.11.1-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:f632bd94772e00313d0956bb9f9822c3ebcb7aa93f135f09e2fa187f3b06cea8", size = 2764795 },
-    { url = "https://files.pythonhosted.org/packages/fb/c7/5b7c4b0c6272b3d52fdedb10aad888b0e8600947b417157e6d9b486c6eb5/dearpygui-1.11.1-cp39-cp39-win_amd64.whl", hash = "sha256:0c7c4849bc674e825750be69ee480450c3589c7d159955032776aaef5e7fda58", size = 1723043 },
+    { url = "https://files.pythonhosted.org/packages/2e/26/93db234a69d01ae84ed61abb991a3da5555410abdf38d5932fb7ed594e12/dearpygui-2.1.0-cp310-cp310-macosx_10_6_x86_64.whl", hash = "sha256:374d4c605affdf8a49eef4cf434f76e17df374590e51745b62c67025d1d41ec3", size = 2101011 },
+    { url = "https://files.pythonhosted.org/packages/ef/13/0301fd7fd3ac01ed23003873681c835f18d14267953c54ff6889cb1d0212/dearpygui-2.1.0-cp310-cp310-macosx_13_0_arm64.whl", hash = "sha256:074985fa9d1622edda89c7f113d7a25ae5543f2e3f684bba3601e688c873936f", size = 1874384 },
+    { url = "https://files.pythonhosted.org/packages/5d/54/5e53d99a1d352f387bd18250d8bcfe9e60594eefc062f246f61810c1bd80/dearpygui-2.1.0-cp310-cp310-manylinux1_x86_64.whl", hash = "sha256:49808389f1d1acfb4f5cbd9f1b1ec188fbcd2d828414094864f7035e27158db2", size = 2636636 },
+    { url = "https://files.pythonhosted.org/packages/34/44/2508c4ba08b28cc9e827a04ae00fc73dbe6820531241eb43ba28f370372b/dearpygui-2.1.0-cp310-cp310-win_amd64.whl", hash = "sha256:792c1cd34dd0d03bf15838cc1e66ad01282c672ef0d2b9981368b6dcd37e67d3", size = 1810184 },
+    { url = "https://files.pythonhosted.org/packages/92/fe/66293fc40254a29f060efd3398f2b1001ed79263ae1837db9ec42caa8f1d/dearpygui-2.1.0-cp311-cp311-macosx_10_6_x86_64.whl", hash = "sha256:03e5dc0b3dd2f7965e50bbe41f3316a814408064b582586de994d93afedb125c", size = 2100924 },
+    { url = "https://files.pythonhosted.org/packages/c4/4d/9fa1c3156ba7bbf4dc89e2e322998752fccfdc3575923a98dd6a4da48911/dearpygui-2.1.0-cp311-cp311-macosx_13_0_arm64.whl", hash = "sha256:b5b37710c3fa135c48e2347f39ecd1f415146e86db5d404707a0bf72d16bd304", size = 1874441 },
+    { url = "https://files.pythonhosted.org/packages/5a/3c/af5673b50699e1734296a0b5bcef39bb6989175b001ad1f9b0e7888ad90d/dearpygui-2.1.0-cp311-cp311-manylinux1_x86_64.whl", hash = "sha256:b0cfd7ac7eaa090fc22d6aa60fc4b527fc631cee10c348e4d8df92bb39af03d2", size = 2636574 },
+    { url = "https://files.pythonhosted.org/packages/7f/db/ed4db0bb3d88e7a8c405472641419086bef9632c4b8b0489dc0c43519c0d/dearpygui-2.1.0-cp311-cp311-win_amd64.whl", hash = "sha256:a9af54f96d3ef30c5db9d12cdf3266f005507396fb0da2e12e6b22b662161070", size = 1810266 },
+    { url = "https://files.pythonhosted.org/packages/5a/d2/ac6fb941f7206c2f0cc2bb008647d17eadf04f636f8e59a85e09701b913d/dearpygui-2.1.0-cp39-cp39-macosx_10_6_x86_64.whl", hash = "sha256:0d228a4934c642fb01f1602b71b11f54e8b739ee3902a98fd71618ddca088213", size = 2101015 },
+    { url = "https://files.pythonhosted.org/packages/55/82/86ee6385556783f5e3e6279888c21ea31e226c347ea8ffb4403a79f79660/dearpygui-2.1.0-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:4e4c2df52ffee0810652bdb165972dad2ca8d89c65ea37d69d6157576adba2d7", size = 2636538 },
+    { url = "https://files.pythonhosted.org/packages/26/2f/6cf64bfc46d0aac54273be8182a8ac185cea9028a323b01d43a27c5ee33e/dearpygui-2.1.0-cp39-cp39-win_amd64.whl", hash = "sha256:c337fb8b27f6fbdae89fdb5f36a377e09f955642c025005b1be9b96eef73df3b", size = 1810293 },
 ]
 
 [[package]]
@@ -74,7 +74,7 @@ wheels = [
 
 [[package]]
 name = "nms-newton"
-version = "0.2.0"
+version = "0.2.1"
 source = { editable = "." }
 dependencies = [
     { name = "nmspy" },
@@ -85,14 +85,14 @@ requires-dist = [{ name = "nmspy" }]
 
 [[package]]
 name = "nmspy"
-version = "147408.1"
+version = "147803.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pymhf", extra = ["gui"] },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/38/b7/55767d036aa6218ad05f43aac102d73c15f0cf8e3a1babb101b7b551af43/nmspy-147408.1.tar.gz", hash = "sha256:5df457a4a9af942a4c9cd5966e7a5530d739f3219185c973eed11a6fc2c71fb5", size = 152482 }
+sdist = { url = "https://files.pythonhosted.org/packages/72/45/d854b36314004c5567b0eb4fe039a530af2aaa9c85f6c60a8964ab2788de/nmspy-147803.1.tar.gz", hash = "sha256:b9270c7e3460acb73c99ea9e9748fa3ff3e3cc2893c1cac4a1315c70f917b787", size = 223315 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/52/3d/20aec00baa6c8a505ffaa514c66aa9615198de27377416303a627120df9e/nmspy-147408.1-py3-none-any.whl", hash = "sha256:d1d23f77ed539391ab158052bc49c27684184c1c23bc3f55c859352a8a61ec6f", size = 60857 },
+    { url = "https://files.pythonhosted.org/packages/e2/9d/127398de4ecd3ae629e042951da028e7ff1697cc236cae59297690b25cca/nmspy-147803.1-py3-none-any.whl", hash = "sha256:f2a839f9cfef574a79e6512c0e8b140a16c45a3fd2583dfe85e99ace78fddd7b", size = 64784 },
 ]
 
 [[package]]
@@ -155,7 +155,7 @@ speed = [
 
 [[package]]
 name = "pymhf"
-version = "0.1.15"
+version = "0.1.16"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "cyminhook" },
@@ -165,15 +165,16 @@ dependencies = [
     { name = "pefile" },
     { name = "psutil" },
     { name = "pymem", extra = ["speed"] },
+    { name = "pyrun-injected" },
     { name = "pywin32" },
     { name = "pywinctl" },
     { name = "questionary" },
     { name = "tomlkit" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/19/a9/a04e43d798023af38e371e18cb64c251b3e23f0a3cd70ecd578c23b2fffc/pymhf-0.1.15.tar.gz", hash = "sha256:9c20846ff14cb04cac0aa92a76a5644aef2db282b570f16b5b2886fb64fa4ab5", size = 198254 }
+sdist = { url = "https://files.pythonhosted.org/packages/84/9f/b5b20cc9534b52b6b391267d5b6f23819004cf55ec8ac327c62e34d4b8c8/pymhf-0.1.16.tar.gz", hash = "sha256:5cd5244612274d7b652f1c6de5f5bc6d05e7d8c644c9d8b32428889a6fd32fc2", size = 255019 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/55/3f/ee4b670f0e9dff2ff71691f8ad6f8a57c6d2f55427de73f6a95f9bc25612/pymhf-0.1.15-py3-none-any.whl", hash = "sha256:b91348d84ca72ba58f4b19e0a7be6cdad75f93ee03c34921bd1a94d2252bdeaf", size = 79948 },
+    { url = "https://files.pythonhosted.org/packages/b8/e0/667afad522b2a6b6cafca6305bb7c28a638541a14404f8f11203fb11f8c0/pymhf-0.1.16-py3-none-any.whl", hash = "sha256:43cac5ff9b3d272b46169d1e8c63a83bf2c409a9e39061c6b644fcbc9574b54c", size = 81355 },
 ]
 
 [package.optional-dependencies]
@@ -2653,6 +2654,20 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/8c/f4/6c9f4cb3ec64ceb1d3176199e0b07fad5ab629ca7cceaddd193ba6200728/pyobjc_framework_webkit-11.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:5e7c254ba37b7a41fe9ffd31565495cad961a82ab22727949cdb4aface7f3fa6", size = 51406 },
     { url = "https://files.pythonhosted.org/packages/8d/b6/d62c01a83c22619edf2379a6941c9f6b7aee01c565b9c1170696f85cba95/pyobjc_framework_webkit-11.1-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:10ec89d727af8f216ba5911ff5553f84a5b660f5ddf75b07788e3a439c281165", size = 51406 },
     { url = "https://files.pythonhosted.org/packages/13/46/ad2016804819cfe89d39fa6756252181dc1b46bc478ef8f091248f3ed143/pyobjc_framework_webkit-11.1-cp39-cp39-macosx_10_9_universal2.whl", hash = "sha256:94534450e4b3c0a4fe8ad4fa9258afc07ebfe36e1b3966f0fb5cd437c89ccfbf", size = 51390 },
+]
+
+[[package]]
+name = "pyrun-injected"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pymem" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e4/cc/5d2ba23144e61daa187ad33368e16ca69bf6192ed187de1d9321c1f4a9b3/pyrun_injected-0.2.0.tar.gz", hash = "sha256:46388968f789544318c7b23ab66c7187b8758e485c908f70dff996d0cc2e0db0", size = 9907 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e6/fb/8df173ec16b5bb46c1802ae630461a91852be55f6497bbb0fd706670f37d/pyrun_injected-0.2.0-cp310-cp310-win_amd64.whl", hash = "sha256:c2f61181dde95b02eff1d9df2962c6264a5e8f2d66f1f70b1bb40124f2f96219", size = 16254 },
+    { url = "https://files.pythonhosted.org/packages/e9/bc/179b4aae44dd090aac3a43ac060cffdfc6ae06df83051197fa24243a7b5e/pyrun_injected-0.2.0-cp311-cp311-win_amd64.whl", hash = "sha256:62b1903322e652ecee662008da6644690af6d0469bcbf212638ee32f5e3741ea", size = 16256 },
+    { url = "https://files.pythonhosted.org/packages/4d/4e/c64200e92f7d37f7a492dde796ace68b0c7ead5247ff43d8c16961b0d7ff/pyrun_injected-0.2.0-cp39-cp39-win_amd64.whl", hash = "sha256:e9c76de1413c9b6619a8b9debfb3e5df7c6a215502808e58eb281db67a817d2b", size = 16253 },
 ]
 
 [[package]]

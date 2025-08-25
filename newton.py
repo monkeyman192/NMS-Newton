@@ -1,6 +1,6 @@
 # /// script
 # dependencies = ["nmspy"]
-# requires-python = ">=3.9, <=3.11"
+# requires-python = ">=3.9, <4"
 #
 # [tool.pymhf]
 # exe = "NMS.exe"
@@ -23,7 +23,6 @@ from dataclasses import dataclass
 import logging
 import math
 import random
-import traceback
 from typing import Optional
 
 from pymhf import Mod, load_mod_file
@@ -37,6 +36,7 @@ import nmspy.data.types as nms
 import nmspy.data.exported_types as nmse
 import nmspy.data.enums as enums
 import nmspy.data.basic_types as basic
+from nmspy.decorators import terminal_command
 
 
 logger = logging.getLogger("Newton")
@@ -159,6 +159,8 @@ class Newton(Mod):
 
         self._solarsystem_data_ptr = 0
 
+    # GUI widgets
+
     @property
     @BOOLEAN("Simulation Running: ")
     def simulation_running(self):
@@ -176,6 +178,22 @@ class Newton(Mod):
     @time_rate.setter
     def time_rate(self, value):
         self._time_rate = value
+
+    # Terminal commands
+
+    @terminal_command("Set the time rate")
+    def speed(self, rate: float):
+        self._time_rate = float(rate)
+
+    @terminal_command("Enable planetary motion")
+    def enable(self):
+        self.state.planets_moving = True
+
+    @terminal_command("Disable planetary motion")
+    def disable(self):
+        self.state.planets_moving = False
+
+    # Functions to handle planetary stuff.
 
     def update_gravity_center(self, index: int, new_position: basic.Vector3f):
         if self.state.grav_singleton is not None:
