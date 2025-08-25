@@ -16,7 +16,7 @@ This mod also does not handle moving POI's, or bases, or anything else really ot
 ## Installation:
 
 1. Place the contents of this repo inside a folder under the usual `MODS` folder of No Man's Sky (ie. this file should be at `GAMEDATA/MODS/Newton/`)
-2. Install a python version between 3.9 and 3.11 inclusive. NOTE: Do not install from the windows store as this version will not work.
+2. Install a python version of at least 3.9. NOTE: Do not install from the windows store as this version will not work.
 3. Ensure steam is running (Mod *may* work on GOG but is currently untested...).
 4. Install [NMS.py](https://github.com/monkeyman192/NMS.py): `python -m pip install NMSpy`
 5. Run NMS.py: `pymhf run nmspy`
@@ -27,3 +27,9 @@ You should not need to configure any other options, so you can just continue thr
 The game should start up automatically and you should see a log window as well as another popup which lets you modify some parameters of the mod.
 Once you have loaded in, you can untick the "Simulation paused" check box for the planets to start moving.
 Note: They will be quite slow, so if you want them faster change the "Time rate". If you set this too high it may be impossible to land on planets, so the default speed while slow is meant to be a nice compromise (they move at a nice rate while you are on a planet - it's more noticable when they near the horizon!)
+
+This mod can also be controlled by the in-game text chat.
+Type `/mod newton` to see the options.
+- `/mod newton enable` will turn on planetary motion.
+- `/mod newton disable` will turn off planetary motion.
+- `/mod newton speed X` (specify X as a number) will set the speed at which they move (1 being the "default rate").
