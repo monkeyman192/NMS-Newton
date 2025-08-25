@@ -1,4 +1,4 @@
-# NMS Newton (beta test version (0.2.0))
+# NMS Newton (beta test version (0.2.1))
 
 ## Features:
 
