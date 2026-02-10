@@ -28,10 +28,11 @@ from typing import Optional
 from pymhf import Mod, load_mod_file
 from pymhf.core.memutils import get_addressof, map_struct
 from pymhf.core.mod_loader import ModState
-from pymhf.core.hooking import one_shot
+from pymhf.core.hooking import one_shot, disable
 from pymhf.gui import FLOAT, BOOLEAN
 from pymhf.core.errors import NoSaveError
 
+from nmspy import engine
 import nmspy.data.types as nms
 import nmspy.data.exported_types as nmse
 import nmspy.data.enums as enums
@@ -105,6 +106,7 @@ def get_position_ellipse(center: basic.Vector3f, odata: orbitParams, t: float) -
 # and lookups easier.
 
 
+@disable
 class Newton(Mod):
     __author__ = "monkeyman192"
     __description__ = "Moving planets"
@@ -209,7 +211,7 @@ class Newton(Mod):
             delta = new_position - planet.mPosition
             planet.mPosition = new_position
             planet.mRegionMap.mMatrix.pos = new_position
-            nms.ShiftAllTransformsForNode(handle, delta)
+            engine.ShiftAllTransformsForNode(handle, delta)
             self.update_gravity_center(index, new_position)
 
     def generate_orbit_params(self, index: int, is_moon: bool):
@@ -267,18 +269,21 @@ class Newton(Mod):
     @one_shot
     @nms.cTkDynamicGravityControl.Construct.after
     def load_gravity_singleton(self, this: ctypes._Pointer[nms.cTkDynamicGravityControl]):
+        logger.debug(f"Got the gravity singleton: {this.contents}")
         if self.state.grav_singleton is None:
             self.state.grav_singleton = this.contents
 
     @one_shot
     @nms.cTkDynamicGravityControl.cTkDynamicGravityControl.after
     def load_gravity_singleton2(self, this: ctypes._Pointer[nms.cTkDynamicGravityControl]):
+        logger.debug(f"Got the gravity singleton: {this.contents}")
         if self.state.grav_singleton is None:
             self.state.grav_singleton = this.contents
 
     @one_shot
     @nms.cTkDynamicGravityControl.GetGravity.after
     def load_gravity_singleton3(self, this: ctypes._Pointer[nms.cTkDynamicGravityControl], *args):
+        logger.debug(f"Got the gravity singleton: {this.contents}")
         if self.state.grav_singleton is None:
             self.state.grav_singleton = this.contents
 
@@ -308,7 +313,7 @@ class Newton(Mod):
         index = planet.miPlanetIndex
         self.state.planets[index] = planet
         self.state.planet_handles[index] = planet.mNode
-        logger.debug(f"Planet is index {index} at position {planet.mPosition}")
+        logger.debug(f"Planet is index {index} at position {planet.mPosition} with handle 0x{planet.mNode.lookupInt:X}")
         if self._solarsystem_data is not None:
             parent_planet_index = self._solarsystem_data.PlanetOrbits[index]
         else:
@@ -356,6 +361,8 @@ class Newton(Mod):
     def before_render_HUD(self, this: ctypes._Pointer[nms.cGcShipHUD]):
         # Check to see if the offset has changed. If it has update the cached
         # value and then re-cache.
+        if not this.contents:
+            return
         if self._cached_hud is None:
             self._cached_hud = this.contents
 
