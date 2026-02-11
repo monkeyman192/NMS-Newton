@@ -38,6 +38,7 @@ import nmspy.data.exported_types as nmse
 import nmspy.data.enums as enums
 import nmspy.data.basic_types as basic
 from nmspy.decorators import terminal_command
+from nmspy.common import gameData
 
 
 logger = logging.getLogger("Newton")
@@ -71,9 +72,7 @@ class SingletonState(ModState):
     planets_moving: bool = False
     loaded_enough: bool = False
     grav_singleton: Optional[nms.cTkDynamicGravityControl] = None
-    player_environment: Optional[nms.cGcPlayerEnvironment] = None
     orbital_period_buffers: list[ctypes.Array[ctypes.c_char]] = None
-    GcApplication: Optional[nms.cGcApplication] = None
 
 
 @dataclass
@@ -86,11 +85,13 @@ class NewtonGlobals:
     approach_rate_dropoff: int
 
 
-def get_position_ellipse(center: basic.Vector3f, odata: orbitParams, t: float) -> basic.Vector3f:
+def get_position_ellipse(center: basic.Vector3f, odata: Optional[orbitParams], t: float) -> basic.Vector3f:
     """ Generate the position at some given time based on the orbit parameters.
     NOTE: This will generate an orbit which has no variance in the z-direction.
     TODO: Have a normal vector arg or something to make orbits more interesting.
     """
+    if not odata:
+        return basic.Vector3f(0, 0, 0)
     return basic.Vector3f(
         center.x + odata.a * math.cos(odata.alpha * t + odata.delta),
         center.y + odata.b * math.sin(odata.alpha * t + odata.delta),
@@ -106,11 +107,10 @@ def get_position_ellipse(center: basic.Vector3f, odata: orbitParams, t: float) -
 # and lookups easier.
 
 
-@disable
 class Newton(Mod):
     __author__ = "monkeyman192"
     __description__ = "Moving planets"
-    __version__ = "0.2.0"
+    __version__ = "0.2.2"
 
     save_state = NewtonState(
         planet_times=[0] * 8,
@@ -395,17 +395,13 @@ class Newton(Mod):
         logger.debug("Stopping moving planets...")
         self.state.planets_moving = False
 
+
     @property
     def nearest_planet_index(self) -> int:
         # Return the index of the nearest planet
-        if self.state.player_environment is not None:
-            return self.state.player_environment.miNearestPlanetIndex
+        if gameData.player_environment is not None:
+            return gameData.player_environment.miNearestPlanetIndex
         return -1
-
-    @one_shot
-    @nms.cGcPlayerEnvironment.Update.after
-    def get_player_env(self, this: ctypes._Pointer[nms.cGcPlayerEnvironment], lfTimeStep: float):
-        self.state.player_environment = this.contents
 
     @nms.cGcSolarSystem.OnEnterPlanetOrbit.after
     def after_enter_orbit(self, *args):
@@ -431,7 +427,9 @@ class Newton(Mod):
 
     def move_all_planets(self, delta: float):
         """ Move all the planets in the system. """
-        nearest_planet_index = self.state.player_environment.miNearestPlanetIndex
+        if not gameData.player_environment:
+            return
+        nearest_planet_index = gameData.player_environment.miNearestPlanetIndex
 
         # If we are fully within the orbit of the nearest planet, then we will
         # not move it and everything else moves.
@@ -464,13 +462,13 @@ class Newton(Mod):
                 self.move_planet(idx, new_pos)
             for idx in self.state.moon_indexes:
                 self.save_state.planet_times[idx] += self.time_modifier(idx) * delta
-                parent_planet = self.state.planets[self.state.parent_planet_map[idx]]
-                new_pos = get_position_ellipse(
-                    parent_planet.mPosition,
-                    self.state.orbit_params[idx],
-                    self.save_state.planet_times[idx],
-                )
-                self.move_planet(idx, new_pos)
+                if (parent_planet := self.state.planets[self.state.parent_planet_map[idx]]):
+                    new_pos = get_position_ellipse(
+                        parent_planet.mPosition,
+                        self.state.orbit_params[idx],
+                        self.save_state.planet_times[idx],
+                    )
+                    self.move_planet(idx, new_pos)
         else:
             # To make the motion of other planets/moons look correct when on
             # another one, we need to move the center of the solar system in
@@ -511,50 +509,46 @@ class Newton(Mod):
             for idx in self.state.moon_indexes:
                 self.save_state.planet_times[idx] += delta
                 if idx != planet_to_not_move:
-                    parent_planet = self.state.planets[self.state.parent_planet_map[idx]]
-                    new_pos = get_position_ellipse(
-                        parent_planet.mPosition,
-                        self.state.orbit_params[idx],
-                        self.save_state.planet_times[idx],
-                    )
-                    self.move_planet(idx, new_pos)
+                    if (parent_planet := self.state.planets[self.state.parent_planet_map[idx]]):
+                        new_pos = get_position_ellipse(
+                            parent_planet.mPosition,
+                            self.state.orbit_params[idx],
+                            self.save_state.planet_times[idx],
+                        )
+                        self.move_planet(idx, new_pos)
 
     def time_modifier(self, index: int) -> float:
         """ Return a time modifier based on the planet index.
         This will be 1 for every planet except the nearest which will have a smooth drop off until 0.
         """
-        pe = self.state.player_environment
+        pe = gameData.player_environment
+        if not pe:
+            return 0
         if index == pe.miNearestPlanetIndex:
-            planet = self.state.planets[index]
-            dist = pe.mfDistanceFromPlanet / 1000.0
-            # Far point. Beyond this the rate will be 1
-            far = 10 * planet.mpEnvProperties.contents.SkyAtmosphereHeight / 1000.0
-            # Near point, at this point and closer the rate will be 0
-            near = planet.mpEnvProperties.contents.AtmosphereEndHeight / 1000.0
-            if near < dist < far:
-                n = self.newton_globals.approach_rate_dropoff
-                a_n = near ** n
-                val = (dist ** n - a_n) / (far ** n - a_n)
-                v = min(max(val, 0), 1)
-                return v
-            elif dist >= far:
-                return 1
-            elif dist < near:
-                return 0
+            if (planet := self.state.planets[index]):
+                dist = pe.mfDistanceFromPlanet / 1000.0
+                # Far point. Beyond this the rate will be 1
+                far = 10 * planet.mpEnvProperties.contents.SkyAtmosphereHeight / 1000.0
+                # Near point, at this point and closer the rate will be 0
+                near = planet.mpEnvProperties.contents.AtmosphereEndHeight / 1000.0
+                if near < dist < far:
+                    n = self.newton_globals.approach_rate_dropoff
+                    a_n = near ** n
+                    val = (dist ** n - a_n) / (far ** n - a_n)
+                    v = min(max(val, 0), 1)
+                    return v
+                elif dist >= far:
+                    return 1
+                elif dist < near:
+                    return 0
         return 1
-
-    @one_shot
-    @nms.cTkFSM.StateChange.after
-    def tkfsm_state_change(self, this: ctypes._Pointer[nms.cTkFSM], *args):
-        # TODO: Figure out best way to cast this...
-        self.state.GcApplication = map_struct(this, nms.cGcApplication)
 
     @nms.cGcGameState.LoadFromPersistentStorage.after
     def load_data(self, this, a2, a3, lbNetworkClientLoad):
         # TODO: get the right save data.
-        if self.state.GcApplication is not None:
+        if gameData.GcApplication is not None:
             try:
-                self.save_state.load(f"newton-{self.state.GcApplication.muPlayerSaveSlot}.json")
+                self.save_state.load(f"newton-{gameData.GcApplication.muPlayerSaveSlot}.json")
             except NoSaveError:
                 pass
         else:
@@ -562,16 +556,16 @@ class Newton(Mod):
 
     @nms.cGcGameState.OnSaveProgressCompleted.after
     def after_save_data(self, *args):
-        if self.state.GcApplication is not None:
-            logger.info(f"Saved to slot {self.state.GcApplication.muPlayerSaveSlot}")
-            self.save_state.save(f"newton-{self.state.GcApplication.muPlayerSaveSlot}.json")
+        if gameData.GcApplication is not None:
+            logger.info(f"Saved to slot {gameData.GcApplication.muPlayerSaveSlot}")
+            self.save_state.save(f"newton-{gameData.GcApplication.muPlayerSaveSlot}.json")
 
     @nms.cGcApplication.Update.before
     def run_main_loop(self, this):
         if not self.run:
             return
-        if self.state.GcApplication is not None:
-            if self.state.GcApplication.mbPaused:
+        if gameData.GcApplication is not None:
+            if gameData.GcApplication.mbPaused:
                 # Don't move anything if the game is paused.
                 return
         if self.state.loaded_enough and self.state.planets_moving:
